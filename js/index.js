@@ -1,28 +1,99 @@
-const cards = [
-  { name: 'aquaman', img: 'aquaman.jpg' },
-  { name: 'batman', img: 'batman.jpg' },
-  { name: 'captain america', img: 'captain-america.jpg' },
-  { name: 'fantastic four', img: 'fantastic-four.jpg' },
-  { name: 'flash', img: 'flash.jpg' },
-  { name: 'green arrow', img: 'green-arrow.jpg' },
-  { name: 'green lantern', img: 'green-lantern.jpg' },
-  { name: 'ironman', img: 'ironman.jpg' },
-  { name: 'spiderman', img: 'spiderman.jpg' },
-  { name: 'superman', img: 'superman.jpg' },
-  { name: 'the avengers', img: 'the-avengers.jpg' },
-  { name: 'thor', img: 'thor.jpg' },
-  { name: 'aquaman', img: 'aquaman.jpg' },
-  { name: 'batman', img: 'batman.jpg' },
-  { name: 'captain america', img: 'captain-america.jpg' },
-  { name: 'fantastic four', img: 'fantastic-four.jpg' },
-  { name: 'flash', img: 'flash.jpg' },
-  { name: 'green arrow', img: 'green-arrow.jpg' },
-  { name: 'green lantern', img: 'green-lantern.jpg' },
-  { name: 'ironman', img: 'ironman.jpg' },
-  { name: 'spiderman', img: 'spiderman.jpg' },
-  { name: 'superman', img: 'superman.jpg' },
-  { name: 'the avengers', img: 'the-avengers.jpg' },
-  { name: 'thor', img: 'thor.jpg' }
+const cards = [{
+    name: 'aquaman',
+    img: 'aquaman.jpg'
+  },
+  {
+    name: 'batman',
+    img: 'batman.jpg'
+  },
+  {
+    name: 'captain america',
+    img: 'captain-america.jpg'
+  },
+  {
+    name: 'fantastic four',
+    img: 'fantastic-four.jpg'
+  },
+  {
+    name: 'flash',
+    img: 'flash.jpg'
+  },
+  {
+    name: 'green arrow',
+    img: 'green-arrow.jpg'
+  },
+  {
+    name: 'green lantern',
+    img: 'green-lantern.jpg'
+  },
+  {
+    name: 'ironman',
+    img: 'ironman.jpg'
+  },
+  {
+    name: 'spiderman',
+    img: 'spiderman.jpg'
+  },
+  {
+    name: 'superman',
+    img: 'superman.jpg'
+  },
+  {
+    name: 'the avengers',
+    img: 'the-avengers.jpg'
+  },
+  {
+    name: 'thor',
+    img: 'thor.jpg'
+  },
+  {
+    name: 'aquaman',
+    img: 'aquaman.jpg'
+  },
+  {
+    name: 'batman',
+    img: 'batman.jpg'
+  },
+  {
+    name: 'captain america',
+    img: 'captain-america.jpg'
+  },
+  {
+    name: 'fantastic four',
+    img: 'fantastic-four.jpg'
+  },
+  {
+    name: 'flash',
+    img: 'flash.jpg'
+  },
+  {
+    name: 'green arrow',
+    img: 'green-arrow.jpg'
+  },
+  {
+    name: 'green lantern',
+    img: 'green-lantern.jpg'
+  },
+  {
+    name: 'ironman',
+    img: 'ironman.jpg'
+  },
+  {
+    name: 'spiderman',
+    img: 'spiderman.jpg'
+  },
+  {
+    name: 'superman',
+    img: 'superman.jpg'
+  },
+  {
+    name: 'the avengers',
+    img: 'the-avengers.jpg'
+  },
+  {
+    name: 'thor',
+    img: 'thor.jpg'
+  }
 ];
 
 const memoryGame = new MemoryGame(cards);
@@ -43,7 +114,17 @@ window.addEventListener('load', event => {
   document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', () => {
       // TODO: write some code here
-      console.log(`Card clicked: ${card}`);
+      // console.log(`Card clicked: ${card}`);
+      card.classList.add("turned");
+      memoryGame.pickedCards.push(card.getAttribute("data-card-name"));
+      if (memoryGame.pickedCards.length === 2) {
+        console.log(memoryGame.pickedCards[0] + "/" + memoryGame.pickedCards[1]);
+        if (!memoryGame.checkIfPair(memoryGame.pickedCards[0], memoryGame.pickedCards[1])) {
+          // card.classList.remove("turned");
+          console.log("on ferme");
+        }
+        memoryGame.pickedCards.splice(0);
+      }
     });
   });
 });
